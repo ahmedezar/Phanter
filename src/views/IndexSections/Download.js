@@ -16,12 +16,45 @@
 
 */
 /*eslint-disable*/
-import React from "react";
+import classnames from "classnames";
+import React, { useState } from 'react';
 
 // reactstrap components
-import { Button, Container, Row, Col, UncontrolledTooltip } from "reactstrap";
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  UncontrolledTooltip,
+  Card,
+  CardBody,
+  FormGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+
+} from "reactstrap";
 
 class Download extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showContactSection: false,
+    };
+  }
+
+  handleContactButtonClick = () => {
+    this.setState({ showContactSection: true });
+
+    // // Scroll vers la section "Contact me" après un léger délai pour laisser le temps au composant de s'afficher
+    // setTimeout(() => {
+    //   const contactSection = document.getElementById("contact-me");
+    //   if (contactSection) {
+    //     contactSection.scrollIntoView({ behavior: "smooth" });
+    //   }
+    // }, 100);
+  };
   render() {
     return (
       <>
@@ -31,26 +64,30 @@ class Download extends React.Component {
               <Col className="text-center" lg="8">
                 <h2 className="display-3">
                   Do you love this awesome{" "}
-                  <span className="text-success">
-                    Design System for Bootstrap 4?
-                  </span>
+                  <span className="text-success">Design System for React?</span>
                 </h2>
                 <p className="lead">
-                  Cause if you do, it can be yours for FREE. Hit the button
-                  below to navigate to Phanter where you can find the
-                  Design System in React. Start a new project or give an old
-                  Bootstrap project a new look!
+                  If you're impressed by this fantastic templete Design System
+                  and want to customize it for your online retail business,
+                  don't hesitate to reach out. It's yours ! Simply click the
+                  button below to contact ahmedezar5@gmail.com .
                 </p>
                 <div className="btn-wrapper">
                   <Button
                     className="mb-3 mb-sm-0"
                     color="primary"
-                    href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
+                    onClick={this.handleContactButtonClick}
                   >
-                    Download React
+                    Contact me
                   </Button>
                 </div>
-                <div className="text-center">
+                {/* Avec ces modifications, lorsque vous cliquez sur le bouton
+                "Contact me", il scrollera automatiquement vers la section
+                "Contact us" de votre page React. Assurez-vous également que
+                vous avez inclus les dépendances nécessaires pour la gestion des
+                ancres et du défilement fluide dans votre application React, si
+                elles ne sont pas déjà présentes. */}
+                {/* <div className="text-center">
                   <h4 className="display-4 mb-5 mt-5">
                     Available on these technologies
                   </h4>
@@ -154,12 +191,91 @@ class Download extends React.Component {
                       </UncontrolledTooltip>
                     </Col>
                   </Row>
-                </div>
+                </div> */}
               </Col>
             </Row>
           </Container>
         </section>
-      </>
+        {this.state.showContactSection && (
+          <section
+            id="contact-me"
+            className="section section-lg pt-lg-0 section-contact-us"
+          >
+          <Container>
+            <Row className="justify-content-center mt--300">
+              <Col lg="8">
+                <Card className="bg-gradient-secondary shadow">
+                  <CardBody className="p-lg-5">
+                    <h4 className="mb-1">Want to contact me?</h4>
+                    <p className="mt-0">
+                      Your opinion is very important to us.
+                    </p>
+                    <FormGroup
+                      className={classnames("mt-5", {
+                        focused: this.state.nameFocused,
+                      })}
+                    >
+                      <InputGroup className="input-group-alternative">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="ni ni-user-run" />
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input
+                          placeholder="Your name"
+                          type="text"
+                          onFocus={(e) => this.setState({ nameFocused: true })}
+                          onBlur={(e) => this.setState({ nameFocused: false })}
+                        />
+                      </InputGroup>
+                    </FormGroup>
+                    <FormGroup
+                      className={classnames({
+                        focused: this.state.emailFocused,
+                      })}
+                    >
+                      <InputGroup className="input-group-alternative">
+                        <InputGroupAddon addonType="prepend">
+                          <InputGroupText>
+                            <i className="ni ni-email-83" />
+                          </InputGroupText>
+                        </InputGroupAddon>
+                        <Input
+                          placeholder="Email address"
+                          type="email"
+                          onFocus={(e) => this.setState({ emailFocused: true })}
+                          onBlur={(e) => this.setState({ emailFocused: false })}
+                        />
+                      </InputGroup>
+                    </FormGroup>
+                    <FormGroup className="mb-4">
+                      <Input
+                        className="form-control-alternative"
+                        cols="80"
+                        name="name"
+                        placeholder="Type a message..."
+                        rows="4"
+                        type="textarea"
+                      />
+                    </FormGroup>
+                    <div>
+                      <Button
+                        block
+                        className="btn-round"
+                        color="default"
+                        size="lg"
+                        type="button"
+                      >
+                        Send Message
+                      </Button>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </section>)};
+     </>
     );
   }
 }

@@ -15,10 +15,10 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+
 // nodejs library that concatenates classes
 import classnames from "classnames";
-
+import React, { useState } from 'react';
 // reactstrap components
 import {
   Badge,
@@ -45,11 +45,13 @@ import Download from "../IndexSections/Download.js";
 
 class Landing extends React.Component {
   state = {};
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+  
   render() {
     return (
       <>
@@ -259,7 +261,19 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="img-fluid floating"
-                    src={require("assets/img/theme/promo-1.png")}
+                    src={require("assets/img/theme/sorong.jpg")}
+                  />
+                  <img
+                    alt="..."
+                    className="img-fluid floating"
+                    src={require("assets/img/theme/khomsa.jpg")}
+                    style={{ width: "250px", height: "auto" }}
+                  />
+                  <img
+                    alt="..."
+                    className="img-fluid floating"
+                    src={require("assets/img/theme/sac.jpg")}
+                    style={{ width: "450px", height: "auto" }}
                   />
                 </Col>
                 <Col className="order-md-1" md="6">
@@ -267,11 +281,12 @@ class Landing extends React.Component {
                     <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
                       <i className="ni ni-settings-gear-65" />
                     </div>
-                    <h3>Awesome features</h3>
+                    <h3>Some articles</h3>
                     <p>
-                      The kit comes with three pre-built pages to help you get
-                      started faster. You can change the text and images and
-                      you're good to go.
+                      Ici, vous pouvez jeter un coup d'œil à un aperçu de nos
+                      articles. Si vous souhaitez voir l'ensemble de notre
+                      collection, il vous suffit de cliquer sur le bouton
+                      ci-dessous.
                     </p>
                     <ul className="list-unstyled mt-5">
                       <li className="py-2">
@@ -286,7 +301,7 @@ class Landing extends React.Component {
                           </div>
                           <div>
                             <h6 className="mb-0">
-                              Carefully crafted components
+                            Votre Confiance, Notre Engagement.
                             </h6>
                           </div>
                         </div>
@@ -302,7 +317,7 @@ class Landing extends React.Component {
                             </Badge>
                           </div>
                           <div>
-                            <h6 className="mb-0">Amazing page examples</h6>
+                            <h6 className="mb-0">Qualité, Fiabilité, Confiance.</h6>
                           </div>
                         </div>
                       </li>
@@ -318,7 +333,7 @@ class Landing extends React.Component {
                           </div>
                           <div>
                             <h6 className="mb-0">
-                              Super friendly support team
+                            Nous Bâtissons des Relations de Confiance.
                             </h6>
                           </div>
                         </div>
@@ -329,14 +344,14 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
-          <section className="section bg-secondary">
+          {/* <section className="section bg-secondary">
             <Container>
               <Row className="row-grid align-items-center">
-                <Col md="6">
+                <Col md="6"> 
                   <Card className="bg-default shadow border-0">
                     <CardImg
                       alt="..."
-                      src={require("assets/img/theme/img-1-1200x1000.jpg")}
+                      src={require("assets/img/theme/panther1.png")}
                       top
                     />
                     <blockquote className="card-blockquote">
@@ -399,8 +414,8 @@ class Landing extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </section>
-          <section className="section pb-0 bg-gradient-warning">
+          </section> */}
+          {/* <section className="section pb-0 bg-gradient-warning">
             <Container>
               <Row className="row-grid align-items-center">
                 <Col className="order-lg-2 ml-lg-auto" md="6">
@@ -487,7 +502,7 @@ class Landing extends React.Component {
                 </Col>
               </Row>
             </Container>
-            {/* SVG separator */}
+       
             <div className="separator separator-bottom separator-skew zindex-100">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -503,7 +518,7 @@ class Landing extends React.Component {
                 />
               </svg>
             </div>
-          </section>
+          </section> */}
           <section className="section section-lg">
             <Container>
               <Row className="justify-content-center text-center mb-lg">
@@ -690,7 +705,7 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
-          <section className="section section-lg pt-0">
+          {/* <section className="section section-lg pt-0">
             <Container>
               <Card className="bg-gradient-warning shadow-lg border-0">
                 <div className="p-5">
@@ -720,7 +735,7 @@ class Landing extends React.Component {
                 </div>
               </Card>
             </Container>
-          </section>
+          </section> */}
           <section className="section section-lg bg-gradient-default">
             <Container className="pt-lg pb-300">
               <Row className="text-center justify-content-center">
@@ -867,6 +882,8 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
+
+
           <Download />
         </main>
         <CardsFooter />
